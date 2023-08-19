@@ -4,10 +4,8 @@ const Model = require('./model')
 
 const Signup = async (req,res)=>{
     const user = new Model(req.body)
-    const userCheck = await Model.findOne({email,password});
-    if(userCheck){
-        return res.json('user exists');
-    }
+     
+     
     await user.save()
     .then((response)=>{
         console.log('user inserted');
