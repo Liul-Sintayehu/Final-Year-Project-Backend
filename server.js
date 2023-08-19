@@ -15,8 +15,8 @@ mongoose.connect(uri,{useNewUrlParser:true})
 .then((res)=>{
     console.log('connected to db');
 })
-app.listen(6782,()=>{
-    console.log('listening on port 6782');
+app.listen(45963,()=>{
+    console.log('listening on port 45963');
 })
 
 //middlewares
