@@ -9,6 +9,6 @@ const firstAiderSchema = new mongoose.Schema({
     experiance:Number
 })
 
-const FirstAiderModel = mongoose.model('Test5',firstAiderSchema)
+const FirstAiderModel = mongoose.model('Firstaid',firstAiderSchema)
 
 module.exports = FirstAiderModel

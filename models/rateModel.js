@@ -3,6 +3,6 @@ const rateSchema = new mongoose.Schema({
     rate:Number
 })
 
-const RateModel = mongoose.model('Test2',rateSchema)
+const RateModel = mongoose.model('Rate',rateSchema)
 
 module.exports = RateModel

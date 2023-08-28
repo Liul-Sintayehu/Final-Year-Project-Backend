@@ -7,6 +7,6 @@ const gagariSchema = new mongoose.Schema({
     experiance:Number
 })
 
-const GagariModel = mongoose.model('Test3',gagariSchema)
+const GagariModel = mongoose.model('Gagari',gagariSchema)
 
 module.exports = GagariModel

@@ -10,7 +10,7 @@ const melkSchema = new mongoose.Schema({
     gps:String
 })
 
-const MelktModel = mongoose.model('Test1',melkSchema)
+const MelktModel = mongoose.model('Melkt',melkSchema)
 
 
 module.exports =  MelktModel

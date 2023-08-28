@@ -7,6 +7,6 @@ const melktegnaSchema = new mongoose.Schema({
     subcity:String
 })
 
-const MelktegnaModel = mongoose.model('Test4',melktegnaSchema)
+const MelktegnaModel = mongoose.model('Melktegna',melktegnaSchema)
 
 module.exports = MelktegnaModel
