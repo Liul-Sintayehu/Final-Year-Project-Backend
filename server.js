@@ -9,8 +9,9 @@ app.use(cors())
 
 
 //connections
-
-const uri = "mongodb+srv://liul:eKwJXBaSPD6sHSCX@cluster0.up98o7c.mongodb.net/practice2?retryWrites=true&w=majority";
+//url2 = 'mongodb://127.0.0.1/test'
+//atlas = mongodb+srv://liul:eKwJXBaSPD6sHSCX@cluster0.up98o7c.mongodb.net/practice2?retryWrites=true&w=majority
+const uri = "mongodb://127.0.0.1/test";
 mongoose.connect(uri,{useNewUrlParser:true})
 .then((res)=>{
     console.log('connected to db');
@@ -24,3 +25,4 @@ app.listen(45963,()=>{
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(Router)
+app.use(express.static(__dirname+'/Public'))

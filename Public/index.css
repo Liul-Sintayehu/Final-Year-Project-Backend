@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+button{
+    width: 100px;
+    padding: 20px;
+    margin: 20px auto ;
+}
+.container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    position: absolute;
+    top: 5%;
+    left: 27%;
+    font-size: 25px;
+    background-color: #FF007F;
+    padding: 20px;
+    border-radius: 25px;
+    color: white;
+}

@@ -1,0 +1,46 @@
+const MelktegnaModel = require("./models/melktegnaModel")
+
+const GetMelktegna = (req,res)=>{
+    const name = req.body.name
+    MelktegnaModel.findOne({name})
+    .then((result)=>{
+        res.json(result)
+    })
+    .catch((err)=>{
+        res.json(err)
+    })
+}
+const GetMelktegnas = (req,res)=>{
+    MelktegnaModel.find({})
+    .then((result)=>{
+        res.json(result)
+    })
+    .catch((err)=>{
+        res.json(err)
+    })
+}
+const RateMelktegna = (req,res)=>{
+    const melktegna = MelktegnaModel.findOne({name:req.body.name})
+    melktegna.updateOne({rate:req.body.rate})
+    .then((result)=>{
+        res.json({msg:'updated'})
+         
+    })
+    .catch((err)=>{
+        res.json({msg:'err'})
+    })
+}
+const GetRateMelktegnaw = (req,res)=>{
+
+    MelktegnaModel.findOne({name:req.body.name})
+    .then((result)=>{
+        res.json({rate:result.rate})
+    })
+}
+
+module.exports = {
+    GetMelktegna,
+    GetMelktegnas,
+    RateMelktegna,
+    GetRateMelktegnaw
+}
