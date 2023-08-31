@@ -40,18 +40,18 @@ const Login = async (req,res)=>{
 
 const Create = (req, res) => {
     const data = [{ name: req.body.teteriN, address: req.body.teteriA }]
-    var tn = req.body.teteriN
-    var ta = req.body.teteriA
-    var full = [];
-    for (var i = 0; i < 2; i++) {
-        full.push({ name: tn[i], address: ta[i] });
-    }
+    // var tn = req.body.teteriN
+    // var ta = req.body.teteriA
+    // var full = [];
+    // for (var i = 0; i < ; i++) {
+    //     full.push({ name: tn[i], address: ta[i] });
+    // }
 
     const client = new MelktModel({
         senderName: req.body.senderName,
         info: req.body.info,
         gps: req.body.gps,
-        teteri: full
+        teteri: req.body.teteri
     })
     client.save()
         .then(resp => {
@@ -63,7 +63,7 @@ const Create = (req, res) => {
 
 
 
-    console.log(full);
+    
 }
 const Rate = (req, res) => {
     const rate = new RateModel(req.body)
