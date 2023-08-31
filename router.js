@@ -50,12 +50,12 @@ router.post('/getratefirstaider',GetRateFirstAider)
 
 
 //melkt page
-router.get('/home',(req,res)=>{
-    res.json({msg:'home page router'});
-})
-router.get('/',(req,res)=>{
-    res.sendFile(__dirname+'/index.html')
-})
+// router.get('/home',(req,res)=>{
+//     res.json({msg:'home page router'});
+// })
+// router.get('/',(req,res)=>{
+//     res.sendFile(__dirname+'/index.html')
+// })
 
 
 module.exports = router
