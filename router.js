@@ -53,9 +53,9 @@ router.post('/getratefirstaider',GetRateFirstAider)
 // router.get('/home',(req,res)=>{
 //     res.json({msg:'home page router'});
 // })
-// router.get('/',(req,res)=>{
-//     res.sendFile(__dirname+'/index.html')
-// })
+router.get('/',(req,res)=>{
+    res.json({msg:"server runnig"})
+})
 
 
 module.exports = router
