@@ -4,7 +4,10 @@ const melktegnaSchema = new mongoose.Schema({
     name:String,
     rate:Number,
     phone:Number,
-    subcity:String
+    subcity:String,
+    payment:String,
+    method:String,
+    experiance:String
 })
 
 const MelktegnaModel = mongoose.model('Melktegna',melktegnaSchema)

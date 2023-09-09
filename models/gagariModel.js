@@ -4,6 +4,8 @@ const gagariSchema = new mongoose.Schema({
     name:String,
     rate:Number,
     phone:Number,
+    subcity:String,
+    payment:String,
     experiance:Number
 })
 

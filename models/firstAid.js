@@ -6,6 +6,7 @@ const firstAiderSchema = new mongoose.Schema({
     phone:Number,
     subcity:String,
     proffesion:String,
+    payment:String,
     experiance:Number
 })
 
