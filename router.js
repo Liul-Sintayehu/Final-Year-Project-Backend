@@ -46,7 +46,7 @@ router.post('/ratefirstaider',RateFirstAider)
 router.post('/getratefirstaider',GetRateFirstAider)
 
 //downloads
-//router.post('/download',Download)
+router.post('/download',Download)
 
 
 
