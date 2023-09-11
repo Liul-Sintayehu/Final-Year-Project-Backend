@@ -49,10 +49,11 @@ const GetDownloads = (req,res)=>{
 }
 const Download = (req,res)=>{
      const down = 0;
-    const downloads = DownloadModel.findOne({})
+    DownloadModel.findOne({})
     .then((result)=>{
         down = result.downloads
     })
+    const downloads = DownloadModel.findOne({})
     downloads.updateOne({downloads:down+req.body.download})
     .then((result)=>{
         res.json(result)
@@ -60,6 +61,18 @@ const Download = (req,res)=>{
     .catch((err)=>{
         res.json(err)
     })
+
+    const gagari = GagariModel.findOne({name:req.body.name})
+    gagari.updateOne({rate:req.body.rate})
+    .then((result)=>{
+        res.json({msg:'updated'})
+         
+    })
+    .catch((err)=>{
+        res.json({msg:'err'})
+    })
+
+
 }
 
 
