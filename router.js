@@ -4,6 +4,7 @@ const { GetMelkts, GetMelkt, GetGagari, CreateMelktegna, CreateFirstAider, GetFi
 const { GetMelktegna, GetMelktegnas } = require('./controller3')
 const { RateMelktegna } = require('./controller3')
 const { GetRateMelktegnaw } = require('./controller3')
+const { Download } = require('./controller3')
 
 const router = express.Router()
 
@@ -44,7 +45,8 @@ router.get('/getfirstaiders',GetFirstAiders)
 router.post('/ratefirstaider',RateFirstAider)
 router.post('/getratefirstaider',GetRateFirstAider)
 
-
+//downloads
+router.post('/download',Download)
 
 
 

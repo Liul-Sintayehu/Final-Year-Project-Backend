@@ -1,3 +1,4 @@
+const DownloadModel = require("./models/downloads")
 const MelktegnaModel = require("./models/melktegnaModel")
 
 const GetMelktegna = (req,res)=>{
@@ -37,10 +38,21 @@ const GetRateMelktegnaw = (req,res)=>{
         res.json({rate:result.rate})
     })
 }
+const Download = ()=>{
+    const downloads = DownloadModel.findOne({})
+    downloads.updateOne({downloads:req.body.downloads})
+    .then((result)=>{
+        res.json({mes:'downloaded'})
+    })
+    .catch((err)=>{
+        res.json({msg:'err'})
+    })
+}
 
 module.exports = {
     GetMelktegna,
     GetMelktegnas,
     RateMelktegna,
-    GetRateMelktegnaw
+    GetRateMelktegnaw,
+    Download
 }
