@@ -5,6 +5,7 @@ const { GetMelktegna, GetMelktegnas } = require('./controller3')
 const { RateMelktegna } = require('./controller3')
 const { GetRateMelktegnaw } = require('./controller3')
 const { Download } = require('./controller3')
+const { GetDownloads } = require('./controller3')
 
 const router = express.Router()
 
@@ -47,6 +48,7 @@ router.post('/getratefirstaider',GetRateFirstAider)
 
 //downloads
 router.post('/download',Download)
+router.get('/getdownloads',GetDownloads)
 
 
 

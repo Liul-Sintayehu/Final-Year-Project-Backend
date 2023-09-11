@@ -38,7 +38,7 @@ const GetRateMelktegnaw = (req,res)=>{
         res.json({rate:result.rate})
     })
 }
-const Download = (req,res)=>{
+const GetDownloads = (req,res)=>{
     const downloads = DownloadModel.findOne({})
     downloads.updateOne({downloads:req.body.downloads})
     .then((result)=>{
@@ -48,11 +48,23 @@ const Download = (req,res)=>{
         res.json({msg:'err'})
     })
 }
+const Download = (req,res)=>{
+    const download = new DownloadModel(req.body.download)
+    download.save()
+    .then((result)=>{
+        res.json({mes:'downloaded'})
+    })
+    .catch((err)=>{
+        res.json({msg:'err'})
+    })
+}
+
 
 module.exports = {
     GetMelktegna,
     GetMelktegnas,
     RateMelktegna,
     GetRateMelktegnaw,
-    Download
+    Download,
+    GetDownloads
 }
