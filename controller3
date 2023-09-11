@@ -39,23 +39,26 @@ const GetRateMelktegnaw = (req,res)=>{
     })
 }
 const GetDownloads = (req,res)=>{
-    const downloads = DownloadModel.findOne({})
-    downloads.updateOne({downloads:req.body.downloads})
+    DownloadModel.findOne({})
     .then((result)=>{
-        res.json({mes:'downloaded'})
+        res.json(result)
     })
     .catch((err)=>{
-        res.json({msg:'err'})
+        res.json(err)
     })
 }
 const Download = (req,res)=>{
-    const download = new DownloadModel(req.body.download)
-    download.save()
+     const down = 0;
+    const downloads = DownloadModel.findOne({})
     .then((result)=>{
-        res.json({mes:'downloaded'})
+        down = result.downloads
+    })
+    downloads.updateOne({downloads:down+req.body.download})
+    .then((result)=>{
+        res.json(result)
     })
     .catch((err)=>{
-        res.json({msg:'err'})
+        res.json(err)
     })
 }
 
