@@ -85,7 +85,7 @@ const getRate = (req, res) => {
             res.json({message:average})
         })
         .catch((err)=>{
-            res.json({message:'error'})
+            res.json(err)
         })
 }
 const createGagari = (req,res)=>{
