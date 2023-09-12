@@ -8,13 +8,13 @@ const RateModel = require('./models/rateModel')
 
 
 const Signup =  (req,res)=>{
-    var balance = 500;
-    const [name,email,password] = req.body
+    var bal = 500;
+     
     const user = new Model({
-        name:name,
-        email:email,
-        password:password,
-        balance:balance
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password,
+        balance:bal
     })
      
      
