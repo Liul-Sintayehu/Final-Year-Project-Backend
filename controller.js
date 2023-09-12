@@ -8,7 +8,7 @@ const RateModel = require('./models/rateModel')
 
 
 const Signup =  (req,res)=>{
-    var bal = 500;
+    var bal = 500.0;
      
     const user = new Model({
         name:req.body.name,
