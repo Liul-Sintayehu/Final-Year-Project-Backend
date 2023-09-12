@@ -7,7 +7,7 @@ const RateModel = require('./models/rateModel')
 
 
 
-const Signup = async (req,res)=>{
+const Signup =  (req,res)=>{
     var balance = 500;
     const [name,email,password] = req.body
     const user = new Model({
@@ -18,7 +18,7 @@ const Signup = async (req,res)=>{
     })
      
      
-    await user.save()
+     user.save()
     .then((response)=>{
         console.log('user inserted');
         res.json({message:'added',response});
