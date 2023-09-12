@@ -8,13 +8,15 @@ const RateModel = require('./models/rateModel')
 
 
 const Signup = async (req,res)=>{
-    const user = new Model(req.body)
+    const balance = 500;
+    const [name,email,password] = req.body
+    const user = new Model(name,email,password,balance)
      
      
     await user.save()
     .then((response)=>{
         console.log('user inserted');
-        res.json({message:'added'});
+        res.json({message:'added',response});
 
     })
     .catch((err)=>{
@@ -30,7 +32,7 @@ const Login = async (req,res)=>{
             return res.status(401).json({message:'invalid'})
         }
 
-        return res.status(200).json({message:'exists'})
+        return res.status(200).json({message:'exists',user})
 
     
 
