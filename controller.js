@@ -73,7 +73,7 @@ const Rate = (req, res) => {
         })
         .catch((err) => {
             res.status(401).json('not rated')
-            console.log(err);
+             
         })
 
 }
@@ -81,7 +81,7 @@ const getRate = (req, res) => {
     RateModel.aggregate([{ $group: { _id: null, average: { $avg: "$rate" } } }])
         .then((result) => {
             const average = result[0].average
-            console.log(average);
+            c 
             res.json({message:average})
         })
         .catch((err)=>{
