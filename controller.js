@@ -10,7 +10,12 @@ const RateModel = require('./models/rateModel')
 const Signup = async (req,res)=>{
     var balance = 500;
     const [name,email,password] = req.body
-    const user = new Model({name,email,password,balance})
+    const user = new Model({
+        name:name,
+        email:email,
+        password:password,
+        balance:balance
+    })
      
      
     await user.save()
