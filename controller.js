@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const express = require('express')
+const bcrypt = require('bcryptjs')
 const Model = require('./model')
 const GagariModel = require('./models/gagariModel')
 const MelktModel = require('./models/melktmodel')
@@ -8,16 +9,19 @@ const FeedbackModel = require('./models/feedback')
 
 
 
-const Signup =  (req,res)=>{
+
+const Signup = async (req,res)=> {
     var bal = 500.0;
-     
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(this.password, salt);
+    const hpassword = hashedPassword;
     const user = new Model({
         name:req.body.name,
         email:req.body.email,
-        password:req.body.password,
+        password:hpassword,
         balance:bal
     })
-     
+    
      
      user.save()
     .then((response)=>{
@@ -31,14 +35,27 @@ const Signup =  (req,res)=>{
     })
 }
 const Login = async (req,res)=>{
-     const {email,password} = req.body
-     const user = await Model.findOne({email,password})
-     
-        if(!user){
-            return res.status(401).json({message:'invalid'})
+     const {email} = req.body
+     const user = await Model.findOne({email})
+     bcrypt.compare(req.body.password, user.password, function (error, isMatch) {
+        if (error) {
+          // Handle error
+          return res.status(401).json({message:'invalid'})
         }
+      
+        if (isMatch) {
+          // Password is correct
+          return res.status(200).json({message:'exists',user})
+        } else {
+          // Password is incorrect
+          return res.status(401).json({message:'invalid'})
+        }
+      });
+        // if(!user){
+        //     return res.status(401).json({message:'invalid'})
+        // }
 
-        return res.status(200).json({message:'exists',user})
+        //return res.status(200).json({message:'exists',user})
 
     
 
