@@ -88,11 +88,10 @@ const getRate = (req, res) => {
     RateModel.aggregate([{ $group: { _id: null, average: { $avg: "$rate" } } }])
         .then((result) => {
             const average = result[0].average
-            c 
             res.json({message:average})
         })
         .catch((err)=>{
-            res.json(err)
+            res.json('err')
         })
 }
 const createGagari = (req,res)=>{
