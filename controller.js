@@ -12,45 +12,73 @@ const FeedbackModel = require('./models/feedback')
 
 const Signup = async (req,res)=> {
     var bal = 500.0;
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(this.password, salt);
-    const hpassword = hashedPassword;
-    const user = new Model({
-        name:req.body.name,
-        email:req.body.email,
-        password:hpassword,
-        balance:bal
-    })
+    let hashedPassword;
+    bcrypt.genSalt(10,async (err, salt) => {
+         bcrypt.hash(req.body.password, salt, (err, hash) => {
+          if (err) {
+            console.error(err);
+          } else {
+            const user = new  Model({
+                name:req.body.name,
+                email:req.body.email,
+                password:hash,
+                balance:bal,
+               
+            })
+            
+             
+             user.save()
+            .then((response)=>{
+                console.log('user inserted');
+                res.json({message:'added',response});
+        
+            })
+            .catch((err)=>{
+                console.log(err);
+                res.json({message:'error'})
+            })
+          }
+        });
+      });
+        
     
-     
-     user.save()
-    .then((response)=>{
-        console.log('user inserted');
-        res.json({message:'added',response});
-
-    })
-    .catch((err)=>{
-        console.log(err);
-        res.json({message:'error'})
-    })
 }
 const Login = async (req,res)=>{
-     const {email} = req.body
-     const user = await Model.findOne({email})
-     bcrypt.compare(req.body.password, user.password, function (error, isMatch) {
-        if (error) {
-          // Handle error
+    const enteredPassword = req.body.password; // Assuming you're retrieving the entered password from the request body
+
+    Model.findOne({ email: req.body.email })
+      .then(user => {
+        if (!user) {
+          // User not found
           return res.status(401).json({message:'invalid'})
-        }
-      
-        if (isMatch) {
-          // Password is correct
-          return res.status(200).json({message:'exists',user})
+          // Handle the error or return an appropriate response
         } else {
-          // Password is incorrect
-          return res.status(401).json({message:'invalid'})
+          bcrypt.compare(enteredPassword, user.password)
+            .then(isMatch => {
+              if (isMatch) {
+                // Passwords match
+                
+                return res.status(200).json({message:'exists',user})
+                // Proceed with further actions (e.g., generating a token, granting access, etc.)
+              } else {
+                // Passwords do not match
+                console.log('Password is incorrect');
+                // Handle the error or return an appropriate response
+                return res.status(401).json({message:'invalid'})
+              }
+            })
+            .catch(error => {
+              
+              // Handle the error or return an appropriate response
+            });
         }
+      })
+      .catch(error => {
+        console.error(error);
+        // Handle the error or return an appropriate response
       });
+    
+
         // if(!user){
         //     return res.status(401).json({message:'invalid'})
         // }
