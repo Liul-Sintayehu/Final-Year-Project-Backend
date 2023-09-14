@@ -1,5 +1,5 @@
 const express = require('express')
-const { Signup, Login, Rate, Create, getRate, createGagari, rateGagari, getRateGagari  } = require('./controller')
+const { Signup, Login, Rate, Create, getRate, createGagari, rateGagari, getRateGagari, Feedback  } = require('./controller')
 const { GetMelkts, GetMelkt, GetGagari, CreateMelktegna, CreateFirstAider, GetFirstAiders, RateFirstAider, GetGagaris, GetFirstAider, GetRateFirstAider } = require('./controller2')
 const { GetMelktegna, GetMelktegnas } = require('./controller3')
 const { RateMelktegna } = require('./controller3')
@@ -50,6 +50,8 @@ router.post('/getratefirstaider',GetRateFirstAider)
 router.post('/download',Download)
 router.get('/getdownloads',GetDownloads)
 
+//feedback
+router.post('/feedback',Feedback)
 
 
 

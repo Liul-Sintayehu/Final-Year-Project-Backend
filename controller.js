@@ -133,6 +133,28 @@ const getRateGagari = (req,res)=>{
         res.json({msg:"error"})
     })
 }
+const Feedback =  (req,res)=>{
+    
+     
+    const feedback = new FeebbackModel({
+        
+        email:req.body.email,
+        subject:req.body.subject,
+        message:req.body.message
+    })
+     
+     
+     feedback.save()
+    .then((response)=>{
+        console.log('user inserted');
+        res.json({message:'added',response});
+
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.json({message:'error'})
+    })
+}
 
 module.exports = {
     Signup,
@@ -142,5 +164,6 @@ module.exports = {
     getRate,
     createGagari,
     rateGagari,
-    getRateGagari
+    getRateGagari,
+    Feedback
 }
