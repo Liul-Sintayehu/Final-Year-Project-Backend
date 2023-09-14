@@ -5,6 +5,6 @@ const feedbackSchema = new mongoose.Schema({
     message:String
 })
 
-const FeebbackModel = mongoose.model('Feedback',feedbackSchema)
+const FeedbackModel = mongoose.model('Feedback',feedbackSchema)
 
-module.exports = FeebbackModel
+module.exports = FeedbackModel

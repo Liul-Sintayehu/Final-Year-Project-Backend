@@ -4,6 +4,7 @@ const Model = require('./model')
 const GagariModel = require('./models/gagariModel')
 const MelktModel = require('./models/melktmodel')
 const RateModel = require('./models/rateModel')
+const FeedbackModel = require('./models/feedback')
 
 
 
@@ -136,7 +137,7 @@ const getRateGagari = (req,res)=>{
 const Feedback =  (req,res)=>{
     
      
-    const feedback = new FeebbackModel({
+    const feedback = new FeedbackModel({
         
         email:req.body.email,
         subject:req.body.subject,
