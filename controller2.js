@@ -28,7 +28,7 @@ const GetGagaris = (req,res)=>{
         res.json(result)
     })
     .catch((err)=>{
-        console.log(err);
+        res.json(err)
     })
 }
 const GetGagari = (req,res)=>{
