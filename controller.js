@@ -203,7 +203,7 @@ gagari
     return GagariModel.updateOne({ name: req.body.name }, { rate: newRate });
   })
   .then(() => {
-    res.json({ msg: 'updated' });
+    res.json({ msg: 'updated ' });
   })
   .catch((err) => {
     res.json({ msg: 'err' });
