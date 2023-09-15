@@ -3,10 +3,8 @@ const mongoose = require('mongoose')
 const gagariSchema = new mongoose.Schema({
     name:String,
     rate:Number,
-    phone:Number,
+    phone:String,
     subcity:String,
-    payment:String,
-    experiance:Number
 })
 
 const GagariModel = mongoose.model('Gagari',gagariSchema)
