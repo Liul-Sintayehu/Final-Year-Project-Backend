@@ -199,7 +199,7 @@ const gagari = GagariModel.findOne({ name: req.body.name });
 gagari
   .then((gagariDoc) => {
     // Calculate the new average rate
-    const newRate = (gagariDoc.rate + req.body.rate) / 2;
+    const newRate = (gagariDoc.rate + Number(req.body.rate)) / 2;
 
     // Update the document with the new average rate
     return GagariModel.updateOne({ name: req.body.name }, { rate: newRate });
