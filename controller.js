@@ -168,31 +168,46 @@ const rateGagari = (req,res)=>{
     // })
     // .catch((err)=>{
     //     res.json({msg:'err'})
-    // })
-    const gagari = GagariModel.findOne({ name: req.body.name });
+   // })
+//     const gagari = GagariModel.findOne({ name: req.body.name });
 
-gagari.then((user) => {
-  if (user) {
-    const updatedRate = (user.rate + req.body.rate) / 2; // Calculate the average rate
+// gagari.then((user) => {
+//   if (user) {
+//     const updatedRate = (user.rate + req.body.rate) / 2; // Calculate the average rate
 
-    user.rate = updatedRate; // Assign the new average rate to the user object
+//     user.rate = updatedRate; // Assign the new average rate to the user object
 
-    user
-      .save() // Save the updated user object
-      .then((result) => {
-        res.json({ msg: 'updated' });
-      })
-      .catch((err) => {
-        res.json({ msg: 'error' });
-      });
-  } else {
-    res.json({ msg: 'User not found' });
-  }
-})
-.catch((err) => {
-  res.json({ msg: 'error' });
-});
+//     user
+//       .save() // Save the updated user object
+//       .then((result) => {
+//         res.json({ msg: 'updated' });
+//       })
+//       .catch((err) => {
+//         res.json({ msg: 'error' });
+//       });
+//   } else {
+//     res.json({ msg: 'User not found' });
+//   }
+// })
+// .catch((err) => {
+//   res.json({ msg: 'error' });
+// });
+const gagari = GagariModel.findOne({ name: req.body.name });
 
+gagari
+  .then((gagariDoc) => {
+    // Calculate the new average rate
+    const newRate = (gagariDoc.rate + req.body.rate) / 2;
+
+    // Update the document with the new average rate
+    return GagariModel.updateOne({ name: req.body.name }, { rate: newRate });
+  })
+  .then(() => {
+    res.json({ msg: 'updated' });
+  })
+  .catch((err) => {
+    res.json({ msg: 'err' });
+  });
     
 }
 const getRateGagari = (req,res)=>{
