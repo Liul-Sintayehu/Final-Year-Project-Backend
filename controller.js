@@ -6,6 +6,7 @@ const GagariModel = require('./models/gagariModel')
 const MelktModel = require('./models/melktmodel')
 const RateModel = require('./models/rateModel')
 const FeedbackModel = require('./models/feedback')
+const model = require('./model')
 
 
 
@@ -245,6 +246,25 @@ const Feedback =  (req,res)=>{
     })
 }
 
+const UpdateBalance = (req,res)=>{
+    const user = model.findOne({ email: req.body.email });
+
+user
+  .then((userDoc) => {
+    // Calculate the new average rate
+    const newBalance = (userDoc.balance - req.body.amount);
+
+    // Update the document with the new average rate
+    return model.updateOne({ email: req.body.email }, { balance: newBalance });
+  })
+  .then((resp) => {
+    res.json(resp);
+  })
+  .catch((err) => {
+    res.json({ msg: 'err' });
+  });
+}
+
 module.exports = {
     Signup,
     Login,
@@ -254,5 +274,6 @@ module.exports = {
     createGagari,
     rateGagari,
     getRateGagari,
-    Feedback
+    Feedback,
+    UpdateBalance
 }

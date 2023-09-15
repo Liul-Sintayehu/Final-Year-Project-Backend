@@ -1,5 +1,5 @@
 const express = require('express')
-const { Signup, Login, Rate, Create, getRate, createGagari, rateGagari, getRateGagari, Feedback  } = require('./controller')
+const { Signup, Login, Rate, Create, getRate, createGagari, rateGagari, getRateGagari, Feedback, UpdataeBalance, UpdateBalance  } = require('./controller')
 const { GetMelkts, GetMelkt, GetGagari, CreateMelktegna, CreateFirstAider, GetFirstAiders, RateFirstAider, GetGagaris, GetFirstAider, GetRateFirstAider } = require('./controller2')
 const { GetMelktegna, GetMelktegnas } = require('./controller3')
 const { RateMelktegna } = require('./controller3')
@@ -70,6 +70,8 @@ router.post('/payment',Payment)
 router.get('/getpayment',GetPayment)
 //notification
 router.post('/notify',Notify)
+//updatebalance
+router.post('/updatebalance',UpdateBalance)
 
 
 //melkt page
