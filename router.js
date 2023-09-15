@@ -6,7 +6,7 @@ const { RateMelktegna } = require('./controller3')
 const { GetRateMelktegnaw } = require('./controller3')
 const { Download } = require('./controller3')
 const { GetDownloads } = require('./controller3')
-const { GagariRequest, GetGagariRequest, DoctorRequest, GetDoctorRequest, Payment, GetPayment, Notify } = require('./controller4')
+const { GagariRequest, GetGagariRequest, DoctorRequest, GetDoctorRequest, Payment, GetPayment, Notify, GetFeedback } = require('./controller4')
 
 const router = express.Router()
 
@@ -72,6 +72,8 @@ router.get('/getpayment',GetPayment)
 router.post('/notify',Notify)
 //updatebalance
 router.post('/updatebalance',UpdateBalance)
+//getfeedback
+router.get('/getfeedback',GetFeedback)
 
 
 //melkt page

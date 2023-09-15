@@ -1,4 +1,5 @@
 const model = require("./model")
+const FeedbackModel = require("./models/feedback")
 const DoctorRequestModel = require("./models/request/docrequset")
 const PaymentModel = require("./models/request/payment")
 const GagariRequestModel = require("./models/request/requestmodel")
@@ -84,6 +85,15 @@ const Notify =(req,res)=>{
         res.json(err)
     })
 }
+const GetFeedback = (req,res)=>{
+    FeedbackModel.find({})
+    .then((result)=>{
+        res.json(result)
+    })
+    .catch((err)=>{
+        res.json(err)
+    })
+}
 
 
 module.exports = {
@@ -93,5 +103,6 @@ module.exports = {
     GetDoctorRequest,
     Payment,
     GetPayment,
-    Notify
+    Notify,
+    GetFeedback
 }

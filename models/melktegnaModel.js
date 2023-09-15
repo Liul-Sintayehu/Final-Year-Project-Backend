@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const melktegnaSchema = new mongoose.Schema({
     name:String,
     rate:Number,
-    phone:Number,
+    phone:String,
     subcity:String,
     payment:String,
     method:String,
