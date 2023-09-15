@@ -42,21 +42,40 @@ const GetGagari = (req,res)=>{
     })
 }
 const CreateMelktegna = (req,res)=>{
+    // const name = req.body.name
+    // const phone = req.body.phone
+    // var rate = 0.0;
+    // const subcity = req.body.subcity
+    // if(req.body.rate != undefined ){
+    //     rate = req.body.rate
+    // }
+    // const melktegna = new MelktegnaModel({name,phone,rate,subcity})
+    // melktegna.save()
+    // .then((result)=>{
+    //     res.json(result)
+    // })
+    // .catch((err)=>{
+    //     res.json({msg:'err'})
+    // })
+
     const name = req.body.name
     const phone = req.body.phone
     var rate = 0.0;
-    const subcity = req.body.subcity
+    const experiance = req.body.experiance
     if(req.body.rate != undefined ){
         rate = req.body.rate
     }
-    const melktegna = new MelktegnaModel({name,phone,rate,subcity})
+    const melktegna = new MelktegnaModel({name,phone,rate,experiance})
     melktegna.save()
     .then((result)=>{
         res.json(result)
     })
     .catch((err)=>{
-        res.json({msg:'err'})
+        res.json(err)
     })
+
+
+
 }
 const CreateFirstAider = (req,res)=>{
     const name = req.body.name
