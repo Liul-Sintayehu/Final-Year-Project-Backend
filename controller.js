@@ -13,6 +13,10 @@ const FeedbackModel = require('./models/feedback')
 const Signup = async (req,res)=> {
     var bal = 500.0;
     let hashedPassword;
+    const notification = ""
+    if(req.body.notification != undefined ){
+        notification = req.body.notification
+    }
     bcrypt.genSalt(10,async (err, salt) => {
          bcrypt.hash(req.body.password, salt, (err, hash) => {
           if (err) {
@@ -23,18 +27,16 @@ const Signup = async (req,res)=> {
                 email:req.body.email,
                 password:hash,
                 balance:bal,
-               
-            })
-            
-             
+                notification: notification    
+            });
              user.save()
             .then((response)=>{
-                console.log('user inserted');
+                 
                 res.json({message:'added',response});
         
             })
             .catch((err)=>{
-                console.log(err);
+                 
                 res.json({message:'error'})
             })
           }
