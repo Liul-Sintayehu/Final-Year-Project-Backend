@@ -144,16 +144,18 @@ const getRate = (req, res) => {
 }
 const createGagari = (req,res)=>{
     const name = req.body.name
-    const phone = req.body.phone
     var rate = 0.0;
+    const phone = req.body.phone
+    const subcity = req.body.subcity
+    const payment = req.body.payment
     const experiance = req.body.experiance
     if(req.body.rate != undefined ){
         rate = req.body.rate
     }
-    const gagari = new GagariModel({name,phone,rate,experiance})
+    const gagari = new GagariModel({name,rate,phone,subcity,payment,experiance})
     gagari.save()
     .then((result)=>{
-        res.json('gagai added')
+        res.json(result)
     })
     .catch((err)=>{
         res.json({msg:'err'})
