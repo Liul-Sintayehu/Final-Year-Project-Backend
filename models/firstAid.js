@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const firstAiderSchema = new mongoose.Schema({
     name:String,
     rate:Number,
-    phone:Number,
+    phone:String,
     subcity:String,
     proffesion:String,
     payment:String,
