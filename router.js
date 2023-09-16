@@ -7,6 +7,7 @@ const { GetRateMelktegnaw } = require('./controller3')
 const { Download } = require('./controller3')
 const { GetDownloads } = require('./controller3')
 const { GagariRequest, GetGagariRequest, DoctorRequest, GetDoctorRequest, Payment, GetPayment, Notify, GetFeedback } = require('./controller4')
+const { CreateAdmin, CreateService, LoginAdmin } = require('./controller5')
 
 const router = express.Router()
 
@@ -74,6 +75,11 @@ router.post('/notify',Notify)
 router.post('/updatebalance',UpdateBalance)
 //getfeedback
 router.get('/getfeedback',GetFeedback)
+
+//admin and serviceproviders
+router.post('/createadmin',CreateAdmin)
+router.post('/loginadmin',LoginAdmin)
+router.post('/createserviceprovider',CreateService)
 
 
 //melkt page
