@@ -18,7 +18,7 @@ const GagariRequest = (req,res)=>{
     })
 }
 const GetGagariRequest = (req,res)=>{
-    GagariRequestModel.findOne({})
+    GagariRequestModel.find({})
     .then((result)=>{
         res.json(result)
     })
